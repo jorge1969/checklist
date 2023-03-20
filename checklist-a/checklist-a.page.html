@@ -1,0 +1,62 @@
+<ion-header>
+    <ion-toolbar color="primary">
+        <!--  -->
+        <ion-buttons slot="start" (click)="Voltar()">
+            <ion-icon name="arrow-back"> </ion-icon>
+        </ion-buttons>
+        <ion-title>{{epoca}}</ion-title>
+
+    </ion-toolbar>
+</ion-header>
+
+
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+
+    <!-- <app-form></app-form> -->
+
+    <form #form="ngForm">
+
+
+
+        <ion-list *ngFor="let item of itens">
+            <ion-radio-group allow-empty-selection="true" name="radio-group" (ionChange)="radioGroupChange($event)" #radioGroup>
+                <ion-list-header>
+
+
+                    <ion-label>{{item.idquestao}} - {{item.questao}}</ion-label>
+
+                </ion-list-header>
+
+                <ion-item *ngFor="let cod of radio_list" (ionFocus)="radioFocus()" (ionSelect)="radioSelect($event)" (ionBlur)="radioBlur()">
+                    <ion-label>{{cod.text}}</ion-label>
+
+                    <ion-radio slot="start" name="{{cod.name}}" value="{{cod.value}}" color="{{cod.color}}" disabled="{{cod.disabled}}"></ion-radio>
+
+                </ion-item>
+
+            </ion-radio-group>
+            <ion-item>
+
+            </ion-item>
+        </ion-list>
+        <hr color="dark">
+
+        <ion-button color="primary" expand="block" (click)="executar(idquestao)">Executar</ion-button>
+        <!-- <ion-button color="primary" expand="block" type="submit" #radioGroup>Executar</ion-button> -->
+
+
+        <!-- <ion-button size="size" type="submit" [disabled]="form.invalid" expand="block">Executar</ion-button> -->
+
+        <!-- <button [disabled]="form.invalid">Enviar Dados</button> -->
+
+        <!-- <ion-button expand="block" shape="round" class="submit-button" (click)="executar()">Submit</ion-button> -->
+
+    </form>
+
+
+    <hr>
+    <!-- (click)="onSubmit()" -->
+
+</ion-content>
